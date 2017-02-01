@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as SpaceRadio from './SpaceRadio';
+import * as Drone from './Drone';
 import './App.css';
 
 class App extends Component {
@@ -12,6 +13,8 @@ class App extends Component {
     this.stop = this.stop.bind(this);
     this.setSynth = this.setSynth.bind(this);
     this.renderRadioButtons = this.renderRadioButtons.bind(this);
+
+    Drone.play();
   }
 
   start() {
@@ -20,6 +23,10 @@ class App extends Component {
 
   stop() {
     SpaceRadio.stop();
+  }
+
+  droneStop() {
+    Drone.stop();
   }
 
   setSynth(e) {
@@ -63,6 +70,14 @@ class App extends Component {
             disabled={!this.state.synth}
           >
             Make some noise
+          </button>
+        </p>
+        <p>
+          <button 
+            className="App-button"
+            onMouseUp={this.droneStop}
+          >
+            Stop bg drone
           </button>
         </p>
       </div>
