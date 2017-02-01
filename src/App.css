@@ -31,3 +31,8 @@
   display: inline-block;
   margin-right: 1rem;
 }
+
+.App-throttle {
+  max-width: calc(100% - 4rem);
+  margin: 0 auto;
+}

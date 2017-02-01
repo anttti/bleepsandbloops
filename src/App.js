@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+
 import * as SpaceRadio from './SpaceRadio';
 import * as Drone from './Drone';
+import * as Throttle from './Throttle';
 import './App.css';
 
 class App extends Component {
@@ -34,6 +38,14 @@ class App extends Component {
     this.setState({
       synth: SpaceRadio.synths.find(s => s.id === id).synth,
     });
+  }
+
+  setFreq(freq) {
+    Throttle.throttle(freq);
+  }
+
+  boost() {
+    Throttle.boost();
   }
 
   renderRadioButtons() {
@@ -78,6 +90,18 @@ class App extends Component {
             onMouseUp={this.droneStop}
           >
             Stop bg drone
+          </button>
+        </p>
+        <div className="App-throttle">
+          <h1>Throttle</h1>
+          <Slider min={0} max={100} onChange={this.setFreq} />
+        </div>
+        <p>
+          <button 
+            className="App-button"
+            onMouseUp={this.boost}
+          >
+            Boost!
           </button>
         </p>
       </div>

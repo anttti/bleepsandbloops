@@ -1,6 +1,6 @@
 import Tone from 'tone';
 
-const VOLUME = -10;
+const VOLUME = -5;
 
 const bass = new Tone.AMSynth().chain(
 	new Tone.Tremolo(0.1, 0.8).start(),
